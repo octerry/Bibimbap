@@ -1,0 +1,3 @@
+repository "Bibimbap/Bibimbap@9072374429214@cloud"
+  path "/"
+    smartbranch "/main"
