@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     {
         direction = phase.ReadValue<Vector2>();
         direction = Vector2.ClampMagnitude(direction, 1f);
-        if(phase.canceled)
+        if(phase.canceled || (MathF.Abs(direction.x) < .1 && MathF.Abs(direction.y) < .1))
         {
             direction = Vector2.zero;
             moving = false;
