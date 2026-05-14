@@ -54,6 +54,15 @@ public class BackgroundBehavior : MonoBehaviour
         _bottomPart = transform.Find("BottomPart").GetComponent<SpriteShapeController>();
         _leftPart = transform.Find("LeftPart").GetComponent<SpriteShapeController>();
         _rightPart = transform.Find("RightPart").GetComponent<SpriteShapeController>();
+        
+        _topPart.spline.SetPosition(2, _arenaTR);
+        _topPart.spline.SetPosition(3, _arenaTL);
+        _rightPart.spline.SetPosition(2, _arenaTR);
+        _rightPart.spline.SetPosition(3, _arenaBR);
+        _bottomPart.spline.SetPosition(2, _arenaBR);
+        _bottomPart.spline.SetPosition(3, _arenaBL);
+        _leftPart.spline.SetPosition(2, _arenaBL);
+        _leftPart.spline.SetPosition(3, _arenaTL);
     }
 
     void Update()
@@ -72,23 +81,15 @@ public class BackgroundBehavior : MonoBehaviour
         
         _topPart.spline.SetPosition(0, _imageTL);
         _topPart.spline.SetPosition(1, _imageTR);
-        _topPart.spline.SetPosition(2, _arenaTR);
-        _topPart.spline.SetPosition(3, _arenaTL);
         
         _rightPart.spline.SetPosition(0, _imageBR);
         _rightPart.spline.SetPosition(1, _imageTR);
-        _rightPart.spline.SetPosition(2, _arenaTR);
-        _rightPart.spline.SetPosition(3, _arenaBR);
         
         _bottomPart.spline.SetPosition(0, _imageBL);
         _bottomPart.spline.SetPosition(1, _imageBR);
-        _bottomPart.spline.SetPosition(2, _arenaBR);
-        _bottomPart.spline.SetPosition(3, _arenaBL);
         
         _leftPart.spline.SetPosition(0, _imageTL);
         _leftPart.spline.SetPosition(1, _imageBL);
-        _leftPart.spline.SetPosition(2, _arenaBL);
-        _leftPart.spline.SetPosition(3, _arenaTL);
         
         _topPart.RefreshSpriteShape(); 
         _rightPart.RefreshSpriteShape();

@@ -19,6 +19,8 @@ public class CameraBigArea : MonoBehaviour
         _mainCam = Camera.main;
         _arenaSize = _backgroundBehavior.arenaSize;
         
+        Debug.Log(_arenaSize);
+        
         Vector3 newPosition = transform.position;
         newPosition = _player.position;
         newPosition.z = -100;
@@ -41,38 +43,42 @@ public class CameraBigArea : MonoBehaviour
         float height = 2f * _mainCam.orthographicSize;
         float width = height * _mainCam.aspect;
 
-        float left = -_arenaSize.x / 2;
-        float right = _arenaSize.x / 2;
-        float top = -_arenaSize.y / 2;
-        float bottom = _arenaSize.y / 2;
-
-        // if (_mainCam.transform.position.x - width < left)
-        // {
-        //     Vector2 newPos = _mainCam.transform.position;
-        //     newPos.x = left + width/2;
-        //     _mainCam.transform.position = newPos;
-        // }
-        //
-        // if (_mainCam.transform.position.x + width > right)
-        // {
-        //     Vector2 newPos = _mainCam.transform.position;
-        //     newPos.x = right - width/2;
-        //     _mainCam.transform.position = newPos;
-        // }
-        //
-        // if (_mainCam.transform.position.y - height < top)
-        // {
-        //     Vector2 newPos = _mainCam.transform.position;
-        //     newPos.x = bottom + height/2;
-        //     _mainCam.transform.position = newPos;
-        // }
-        //
-        // if (_mainCam.transform.position.y + height > bottom)
-        // {
-        //     Vector2 newPos = _mainCam.transform.position;
-        //     newPos.x = bottom - height/2;
-        //     _mainCam.transform.position = newPos;
-        // }
+        float left = _arenaSize.x / 2;
+        float right = - (_arenaSize.x/2);
+        float top = _arenaSize.y / 2;
+        float bottom = - (_arenaSize.y/2);
+        
+        if (_mainCam.transform.position.x < left + width/2)
+        {
+            Vector3 newPos = _mainCam.transform.position;
+            newPos.x = left + width/2;
+            _mainCam.transform.position = newPos;
+            Debug.Log("GAUCHE");
+        }
+        
+        if (_mainCam.transform.position.x > right - width/2)
+        {
+            Vector3 newPos = _mainCam.transform.position;
+            newPos.x = right - width/2;
+            _mainCam.transform.position = newPos;
+            Debug.Log("DROITE");
+        }
+        
+        if (_mainCam.transform.position.y < top + height/2)
+        {
+            Vector3 newPos = _mainCam.transform.position;
+            newPos.y = top + height/2;
+            _mainCam.transform.position = newPos;
+            Debug.Log("HAUT");
+        }
+        
+        if (_mainCam.transform.position.y > bottom - height/2)
+        {
+            Vector3 newPos = _mainCam.transform.position;
+            newPos.y = bottom - height/2;
+            _mainCam.transform.position = newPos;
+            Debug.Log("BAS");
+        }
     }
 
     private void OnDrawGizmos()
