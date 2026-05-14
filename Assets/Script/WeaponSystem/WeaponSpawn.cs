@@ -29,10 +29,10 @@ public class WeaponSpawn : MonoBehaviour
         if (_weaponsNumber < _maxWeapons)
         {
             int chosen = Random.Range(0, transform.childCount);
-            while (_hasAWeapon[chosen])
-            {
-                chosen = Random.Range(0, transform.childCount);
-            }
+            // while (_hasAWeapon[chosen])
+            // {
+            //     chosen = Random.Range(0, transform.childCount);
+            // }
 
             _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen].position, chosen);
             _hasAWeapon[chosen] = true;
