@@ -12,6 +12,6 @@ public class ClickPVEButton : MonoBehaviour
     // Update is called once per frame
     void TaskOnClick()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Arena");
     }
 }
