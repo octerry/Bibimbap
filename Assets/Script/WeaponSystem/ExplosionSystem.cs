@@ -3,30 +3,31 @@ using UnityEngine;
 
 public class ExplosionSystem : MonoBehaviour
 {
-    [SerializeField] float explosionCountdown = 3;
-    [SerializeField] private float knockBack = 10f;
-    private float startTime;
-    Renderer renderer;
-    Collider2D coll;
+    [SerializeField] private float _explosionCountdown = 3;
+    [SerializeField] private float _knockBack = 10f;
+    private float _startTime;
+    private Renderer _renderer;
+    private Collider2D _coll;
+    [SerializeField] private float _lethalDistance = 3f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startTime = Time.time;
-        renderer = GetComponent<Renderer>();
-        coll = GetComponent<Collider2D>();
+        _startTime = Time.time;
+        _renderer = GetComponent<Renderer>();
+        _coll = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > explosionCountdown + startTime)
+        if (Time.time > _explosionCountdown + _startTime)
         {
-            Destroy(renderer);
-            Destroy(coll);
+            Destroy(_renderer);
+            Destroy(_coll);
         }
 
-        if (Time.time > explosionCountdown + startTime + 3)
+        if (Time.time > _explosionCountdown + _startTime + 1)
         {
             Destroy(gameObject);
         }
@@ -41,10 +42,21 @@ public class ExplosionSystem : MonoBehaviour
             float px = collision.transform.position.x;
             float py = collision.transform.position.y;
 
-            float directionX = (px - cx) / Mathf.Abs(px - cx);
-            float directionY = (py - cy) / Mathf.Abs(py - cy);
-            float forceX = directionX * (knockBack / Mathf.Abs(px - cx));
-            float forceY = directionY * (knockBack / Mathf.Abs(py - cy));
+            float angle = Mathf.Atan2(py - cy, px - cx);
+            float m = Mathf.Sqrt(Mathf.Pow(px - cx, 2) + Mathf.Pow(py - cy, 2));
+
+            if (m < _lethalDistance)
+            {
+                if (!collision.CompareTag("Player"))
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            
+            float directionX = Mathf.Cos(angle);
+            float directionY = Mathf.Sin(angle);
+            float forceX = directionX * (_knockBack / m);
+            float forceY = directionY * (_knockBack / m);
             
             collision.GetComponent<Rigidbody2D>().linearVelocityX = forceX;
             collision.GetComponent<Rigidbody2D>().linearVelocityY = forceY;

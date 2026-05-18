@@ -103,8 +103,5 @@ public class BackgroundBehavior : MonoBehaviour
         _bgSprite = _bgImage.GetComponent<SpriteRenderer>();
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _gizmoSize);
-        Gizmos.DrawWireCube(transform.position, arenaSize);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, arenaSize - new Vector2(_bgSprite.bounds.size.x,_bgSprite.bounds.size.y)/2);
-    }
+        Gizmos.DrawWireCube(transform.position, arenaSize);}
 }
