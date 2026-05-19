@@ -4,33 +4,43 @@ public class AmmoSystem : MonoBehaviour
 {
     public enum ammoType
     {
-        PopCorn = 0,
-        RoquetteLauncher = 1,
-        Yogurt = 2,
-        Spaghetti = 3,
-        Pomegranate = 4, //Grenade
-        PotatoLauncher = 5,
-        Toast = 6, //Tartine
-        Starfruit = 7, //Carambole
-        Roquefort = 8,
-        Baguette = 9,
+        Empty = 0,
+        PopCorn = 1,
+        RoquetteLauncher = 2,
+        Yogurt = 3,
+        Spaghetti = 4,
+        Pomegranate = 5, //Grenade
+        PotatoLauncher = 6,
+        Toast = 7, //Tartine
+        Starfruit = 8, //Carambole
+        Roquefort = 9,
+        Baguette = 10,
     }
     
+    public float duration;
+    public bool explodeOnContact;
+    public bool explosion;
+    [SerializeField] GameObject _explosionObject;
+    public ammoType currentAmmoType;
     
-    [SerializeField] int duration;
-    [SerializeField] bool explosion;
-    [SerializeField] GameObject explosionObject;
-    float spawnTime;
+    private float _spawnTime;
+    private SpriteRenderer _spriteRenderer;
     
     void Start()
     {
-        spawnTime = Time.time;
+        _spawnTime = Time.time;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        if ( (Time.time - spawnTime) >= duration)
+        if ( (Time.time - _spawnTime) >= duration)
         {
+            if (explosion && !explodeOnContact)
+            {
+                GameObject explosion = Instantiate(_explosionObject);
+                explosion.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }
@@ -42,7 +52,7 @@ public class AmmoSystem : MonoBehaviour
             Destroy(collision.gameObject);
             if (explosion)
             {
-                GameObject explosion = Instantiate(explosionObject);
+                GameObject explosion = Instantiate(_explosionObject);
                 explosion.transform.position = transform.position;
             }
             Destroy(gameObject);
@@ -51,9 +61,9 @@ public class AmmoSystem : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (explosion)
+        if (explosion && explodeOnContact)
         {
-            GameObject explosion = Instantiate(explosionObject);
+            GameObject explosion = Instantiate(_explosionObject);
             explosion.transform.position = transform.position;
             Destroy(gameObject);
         }
