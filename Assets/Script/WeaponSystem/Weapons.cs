@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class Weapons : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabWeapon;
+    public Sprite[] weaponSprites;
     private GameObject[] _actualWeapons;
     
     void Start()
@@ -19,7 +20,7 @@ public class Weapons : MonoBehaviour
         }
     }
 
-    public void AddRandomWeaponAt(Vector2 position, int n, AmmoSystem.ammoType[] ammoList)
+    public void AddRandomWeaponAt(Transform spawnpoint, int n, AmmoSystem.ammoType[] ammoList)
     {
         AmmoSystem.ammoType randomWeaponType = (AmmoSystem.ammoType)ammoList.GetValue(Random.Range(0, ammoList.Length));
 
@@ -28,6 +29,7 @@ public class Weapons : MonoBehaviour
         weaponCompenent.weaponType = randomWeaponType;
         weaponCompenent.WeaponId = n;
 
-        newWeapon.transform.position = position;
+        newWeapon.transform.position = spawnpoint.position;
+        newWeapon.GetComponent<SpriteRenderer>().sprite = weaponSprites[(int)randomWeaponType -1];
     }
 }

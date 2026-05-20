@@ -7,6 +7,8 @@ public class PlayerShootSystem : MonoBehaviour
     [SerializeField] private InputActionAsset Actions;
     private InputAction _actionTrigger, _actionAim;
 
+    [SerializeField] private Weapons _weapons;
+
     [SerializeField] private GameObject _ammo;
     [SerializeField] private float _ammoSpeed;
     [SerializeField] private float _ammoCooldown;
@@ -16,7 +18,6 @@ public class PlayerShootSystem : MonoBehaviour
     
     private Camera _cam;
     private float _angle = 0;
-    [SerializeField] private Sprite[] _weaponSprites;
     private Transform _shootCursor;
     private SpriteRenderer _shootImage;
 
@@ -195,16 +196,16 @@ public class PlayerShootSystem : MonoBehaviour
         switch (weaponType)
         {
             case AmmoSystem.ammoType.Empty : _shootImage.sprite = null; break;
-            case AmmoSystem.ammoType.PopCorn : _shootImage.sprite = _weaponSprites[0]; break;
-            case AmmoSystem.ammoType.RoquetteLauncher : _shootImage.sprite = _weaponSprites[1]; break;
-            case AmmoSystem.ammoType.Yogurt : _shootImage.sprite = _weaponSprites[2]; break;
-            case AmmoSystem.ammoType.Spaghetti : _shootImage.sprite = _weaponSprites[3]; break;
-            case AmmoSystem.ammoType.Pomegranate : _shootImage.sprite = _weaponSprites[4]; break;
-            case AmmoSystem.ammoType.PotatoLauncher : _shootImage.sprite = _weaponSprites[5]; break;
-            case AmmoSystem.ammoType.Toast : _shootImage.sprite = _weaponSprites[6]; break;
-            case AmmoSystem.ammoType.Starfruit : _shootImage.sprite = _weaponSprites[7]; break;
-            case AmmoSystem.ammoType.Roquefort : _shootImage.sprite = _weaponSprites[8]; break;
-            case AmmoSystem.ammoType.Baguette : _shootImage.sprite = _weaponSprites[9]; break;
+            case AmmoSystem.ammoType.PopCorn : _shootImage.sprite = _weapons.weaponSprites[0]; break;
+            case AmmoSystem.ammoType.RoquetteLauncher : _shootImage.sprite = _weapons.weaponSprites[1]; break;
+            case AmmoSystem.ammoType.Yogurt : _shootImage.sprite = _weapons.weaponSprites[2]; break;
+            case AmmoSystem.ammoType.Spaghetti : _shootImage.sprite = _weapons.weaponSprites[3]; break;
+            case AmmoSystem.ammoType.Pomegranate : _shootImage.sprite = _weapons.weaponSprites[4]; break;
+            case AmmoSystem.ammoType.PotatoLauncher : _shootImage.sprite = _weapons.weaponSprites[5]; break;
+            case AmmoSystem.ammoType.Toast : _shootImage.sprite = _weapons.weaponSprites[6]; break;
+            case AmmoSystem.ammoType.Starfruit : _shootImage.sprite = _weapons.weaponSprites[7]; break;
+            case AmmoSystem.ammoType.Roquefort : _shootImage.sprite = _weapons.weaponSprites[8]; break;
+            case AmmoSystem.ammoType.Baguette : _shootImage.sprite = _weapons.weaponSprites[9]; break;
         }
     }
 }

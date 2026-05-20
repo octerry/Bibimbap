@@ -4,6 +4,7 @@ public class WeaponSpawn : MonoBehaviour
 {
     [SerializeField] private int _maxWeapons;
     [SerializeField] private Transform _weapons;
+    [SerializeField] private PlayerShootSystem _playerShootSystem;
     private Weapons _weaponComponent;
     private Transform[] _spawnpoints;
     private WeaponSpawnPoint[] _spawnPointElements;
@@ -37,7 +38,7 @@ public class WeaponSpawn : MonoBehaviour
             //     chosen = Random.Range(0, transform.childCount);
             // }
 
-            _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen].position, chosen, _spawnPointElements[chosen].GetSpawnableWeapons());
+            _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen], chosen, _spawnPointElements[chosen].GetSpawnableWeapons());
             _hasAWeapon[chosen] = true;
 
             _weaponsNumber++;

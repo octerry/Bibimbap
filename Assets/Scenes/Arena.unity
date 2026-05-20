@@ -901,6 +901,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _prefabWeapon: {fileID: 7676668242029024056, guid: 855a39bbaff4c5142a7bf5e8926ef327, type: 3}
+  weaponSprites:
+  - {fileID: 532282208441007744, guid: 709a6a0861fe83642a98980c980deebf, type: 3}
+  - {fileID: -3863293170916784810, guid: 87230730f82ebc348982d4a0a0361d98, type: 3}
+  - {fileID: 2868684467218627296, guid: 5598afdbfdfffe14a9378f3d79938ba2, type: 3}
+  - {fileID: -1843576385993365262, guid: e5842179d0b42034a8c9bae629c4102c, type: 3}
+  - {fileID: 2419421357277419991, guid: e943cba8044f89c4aa2cceeef596f489, type: 3}
+  - {fileID: -6308796167728847078, guid: b7238d934575fb34ba84dc556efd265e, type: 3}
+  - {fileID: -7349101797620711388, guid: dc10968237aac8e48a99b03e4437b5c4, type: 3}
+  - {fileID: -1854023864724949808, guid: aa69dba62a35ec146a1b7034c3b9500e, type: 3}
+  - {fileID: -5270893012198345702, guid: a8b7b248669206c4da8e04e7c5967c30, type: 3}
+  - {fileID: 8420485207997377320, guid: e7ce935e41907c949ac7513d0176cba0, type: 3}
 --- !u!4 &541914401
 Transform:
   m_ObjectHideFlags: 0
@@ -1491,20 +1502,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShootSystem
   Actions: {fileID: -944628639613478452, guid: a9a04ce7225ad8d43987f603d432ec15, type: 3}
+  _weapons: {fileID: 541914400}
   _ammo: {fileID: 5751601113763993381, guid: cbfe375eda984e5be8b002ecaab029e0, type: 3}
   _ammoSpeed: 7
   _ammoCooldown: 6
-  _weaponSprites:
-  - {fileID: 532282208441007744, guid: 709a6a0861fe83642a98980c980deebf, type: 3}
-  - {fileID: -3863293170916784810, guid: 87230730f82ebc348982d4a0a0361d98, type: 3}
-  - {fileID: 2868684467218627296, guid: 5598afdbfdfffe14a9378f3d79938ba2, type: 3}
-  - {fileID: -1843576385993365262, guid: e5842179d0b42034a8c9bae629c4102c, type: 3}
-  - {fileID: 2419421357277419991, guid: e943cba8044f89c4aa2cceeef596f489, type: 3}
-  - {fileID: -6308796167728847078, guid: b7238d934575fb34ba84dc556efd265e, type: 3}
-  - {fileID: -7349101797620711388, guid: dc10968237aac8e48a99b03e4437b5c4, type: 3}
-  - {fileID: -1854023864724949808, guid: aa69dba62a35ec146a1b7034c3b9500e, type: 3}
-  - {fileID: -5270893012198345702, guid: a8b7b248669206c4da8e04e7c5967c30, type: 3}
-  - {fileID: 8420485207997377320, guid: e7ce935e41907c949ac7513d0176cba0, type: 3}
 --- !u!1 &872364924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,6 +2410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _maxWeapons: 2
   _weapons: {fileID: 541914401}
+  _playerShootSystem: {fileID: 0}
 --- !u!4 &1395383266
 Transform:
   m_ObjectHideFlags: 0
