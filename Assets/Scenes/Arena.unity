@@ -1492,8 +1492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShootSystem
   Actions: {fileID: -944628639613478452, guid: a9a04ce7225ad8d43987f603d432ec15, type: 3}
   _ammo: {fileID: 5751601113763993381, guid: cbfe375eda984e5be8b002ecaab029e0, type: 3}
-  _ammoSpeed: 3
-  _ammoCooldown: 1
+  _ammoSpeed: 7
+  _ammoCooldown: 6
   _weaponSprites:
   - {fileID: 532282208441007744, guid: 709a6a0861fe83642a98980c980deebf, type: 3}
   - {fileID: -3863293170916784810, guid: 87230730f82ebc348982d4a0a0361d98, type: 3}
@@ -3783,8 +3783,8 @@ Transform:
   m_GameObject: {fileID: 1987340287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3129, y: 1.1731, z: 0}
-  m_LocalScale: {x: 52.244064, y: 23.87636, z: 1}
+  m_LocalPosition: {x: -0.3129, y: 0.0028, z: 0}
+  m_LocalScale: {x: 52.244064, y: 21.536476, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

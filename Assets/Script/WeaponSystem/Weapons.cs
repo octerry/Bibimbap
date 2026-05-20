@@ -19,10 +19,9 @@ public class Weapons : MonoBehaviour
         }
     }
 
-    public void AddRandomWeaponAt(Vector2 position, int n)
+    public void AddRandomWeaponAt(Vector2 position, int n, AmmoSystem.ammoType[] ammoList)
     {
-        Array values = Enum.GetValues(typeof(AmmoSystem.ammoType));
-        AmmoSystem.ammoType randomWeaponType = (AmmoSystem.ammoType)values.GetValue(Random.Range(0, values.Length));
+        AmmoSystem.ammoType randomWeaponType = (AmmoSystem.ammoType)ammoList.GetValue(Random.Range(0, ammoList.Length));
 
         GameObject newWeapon = Instantiate(_prefabWeapon);
         SingleWeapon weaponCompenent = newWeapon.GetComponent<SingleWeapon>();

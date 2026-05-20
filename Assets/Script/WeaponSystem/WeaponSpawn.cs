@@ -6,12 +6,14 @@ public class WeaponSpawn : MonoBehaviour
     [SerializeField] private Transform _weapons;
     private Weapons _weaponComponent;
     private Transform[] _spawnpoints;
+    private WeaponSpawnPoint[] _spawnPointElements;
     private bool[] _hasAWeapon;
     private int _weaponsNumber;
     
     void Start()
     {
         _spawnpoints = new Transform[transform.childCount];
+        _spawnPointElements = new WeaponSpawnPoint[transform.childCount];
         _hasAWeapon = new bool[transform.childCount];
         if (_maxWeapons > transform.childCount) _maxWeapons = transform.childCount;
         
@@ -19,6 +21,7 @@ public class WeaponSpawn : MonoBehaviour
         {
             Transform child = transform.GetChild(i);
             _spawnpoints[i] = child;
+            _spawnPointElements[i] = child.GetComponent<WeaponSpawnPoint>();
         }
 
         _weaponComponent = _weapons.GetComponent<Weapons>();
@@ -34,7 +37,7 @@ public class WeaponSpawn : MonoBehaviour
             //     chosen = Random.Range(0, transform.childCount);
             // }
 
-            _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen].position, chosen);
+            _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen].position, chosen, _spawnPointElements[chosen].GetSpawnableWeapons());
             _hasAWeapon[chosen] = true;
 
             _weaponsNumber++;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class weaponSpawnPoint : MonoBehaviour
+public class WeaponSpawnPoint : MonoBehaviour
 {
     [SerializeField] private AmmoSystem.ammoType[] _spawnableWeapons;
     
@@ -9,9 +9,8 @@ public class weaponSpawnPoint : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public AmmoSystem.ammoType[] GetSpawnableWeapons()
     {
-        
+        return _spawnableWeapons;
     }
 }

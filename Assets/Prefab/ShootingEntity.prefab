@@ -170,5 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   duration: 5
+  explodeOnContact: 0
   explosion: 1
-  explosionObject: {fileID: 2299877352663645877, guid: e67915f8de2679608a4337c3d455d8c2, type: 3}
+  _explosionObject: {fileID: 2299877352663645877, guid: e67915f8de2679608a4337c3d455d8c2, type: 3}
+  currentAmmoType: 0
