@@ -30,6 +30,6 @@ public class Weapons : MonoBehaviour
         weaponCompenent.WeaponId = n;
 
         newWeapon.transform.position = spawnpoint.position;
-        newWeapon.GetComponent<SpriteRenderer>().sprite = weaponSprites[(int)randomWeaponType -1];
+        newWeapon.GetComponent<SpriteRenderer>().sprite = weaponSprites[(int)randomWeaponType];
     }
 }

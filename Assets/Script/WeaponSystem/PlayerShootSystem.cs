@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,8 @@ public class PlayerShootSystem : MonoBehaviour
     private float _angle = 0;
     private Transform _shootCursor;
     private SpriteRenderer _shootImage;
+    [SerializeField] private float _contactRange;
+    private List<Transform> _closeEnnemies;
 
     void OnEnable()
     {
@@ -38,6 +41,8 @@ public class PlayerShootSystem : MonoBehaviour
         _shootCursor = transform.Find("ShootCursor");
         _shootImage = _shootCursor.Find("ShootImage").GetComponent<SpriteRenderer>();
         _ammoTimeRef = Time.time - _ammoCooldown;
+
+        _closeEnnemies = new List<Transform>();
     }
 
     void Update()
@@ -159,7 +164,7 @@ public class PlayerShootSystem : MonoBehaviour
                 }
                 case AmmoSystem.ammoType.Toast:
                 {
-
+                    
                     break;
                 }
                 case AmmoSystem.ammoType.Starfruit:
@@ -169,11 +174,27 @@ public class PlayerShootSystem : MonoBehaviour
                 }
                 case AmmoSystem.ammoType.Roquefort:
                 {
-
+                    
                     break;
                 }
                 case AmmoSystem.ammoType.Baguette:
                 {
+                    foreach (var ennemy in _closeEnnemies)
+                    {
+                        float x = ennemy.position.x - transform.position.x;
+                        float y = ennemy.position.y - transform.position.x;
+
+                        float ennemyAngle = Mathf.Atan2(y, x);
+
+                        bool maxBound = ennemyAngle > _angle + _contactRange / 2;
+                        bool minBound = ennemyAngle < _angle - _contactRange / 2 ||
+                                        ennemyAngle < _angle - _contactRange / 2 + (2 * Mathf.PI);
+                        
+                        if (maxBound && minBound)
+                        {
+                            transform.GetComponent<Creature>().Die(direction);
+                        }
+                    }   
 
                     break;
                 }
@@ -188,6 +209,21 @@ public class PlayerShootSystem : MonoBehaviour
         Vector2 direction = phase.ReadValue<Vector2>();
         
         _angle = Mathf.Atan2(direction.y, direction.x);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy"))
+        {
+            _closeEnnemies.Add(col.transform);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (_closeEnnemies.Contains(col.transform))
+        {
+            _closeEnnemies.Remove(col.transform);
+        }
     }
 
     public void ChangeWeaponType(AmmoSystem.ammoType weaponType)

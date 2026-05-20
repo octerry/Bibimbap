@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aa69dba62a35ec146a1b7034c3b9500e
+guid: 4c31876a4f2d2b740a79c8ae8ad33bce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1854023864724949808
-    second: image 127_0
+      213: -5195278561642766639
+    second: Starfruit_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 127_0
+      name: Starfruit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d4f8f93e1f2546e0800000000000000
-      internalID: -1854023864724949808
+      spriteID: 1de94188ca9a6e7b0800000000000000
+      internalID: -5195278561642766639
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 127_0: -1854023864724949808
+      Starfruit_0: -5195278561642766639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: dc10968237aac8e48a99b03e4437b5c4
+guid: aa10f06843ced114c9e7e17ea2d13f63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7349101797620711388
-    second: image 132_0
+      213: 8180320953220700661
+    second: Toast_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 132_0
+      name: Toast_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42002ae2adeb20a90800000000000000
-      internalID: -7349101797620711388
+      spriteID: 5f99765d096568170800000000000000
+      internalID: 8180320953220700661
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 132_0: -7349101797620711388
+      Toast_0: 8180320953220700661
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

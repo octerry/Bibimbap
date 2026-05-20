@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 87230730f82ebc348982d4a0a0361d98
+guid: bde665205639c2d469b2612853ad7ef6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3863293170916784810
-    second: image 123_0
+      213: -2976184978006408520
+    second: RoquetteLauncher_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 123_0
+      name: RoquetteLauncher_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 65500546453d26ac0800000000000000
-      internalID: -3863293170916784810
+      spriteID: 8b20310f78772b6d0800000000000000
+      internalID: -2976184978006408520
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 123_0: -3863293170916784810
+      RoquetteLauncher_0: -2976184978006408520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

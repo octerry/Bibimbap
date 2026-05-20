@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8b7b248669206c4da8e04e7c5967c30
+guid: d53e8b6075699f244b56e47834faf73e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5270893012198345702
-    second: image 129_0
+      213: -7290066020642774573
+    second: Roquefort_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 129_0
+      name: Roquefort_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 37
+        width: 36
         height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1434d65bb60ad6b0800000000000000
-      internalID: -5270893012198345702
+      spriteID: 3d12172249b74da90800000000000000
+      internalID: -7290066020642774573
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 129_0: -5270893012198345702
+      Roquefort_0: -7290066020642774573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

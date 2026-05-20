@@ -902,16 +902,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _prefabWeapon: {fileID: 7676668242029024056, guid: 855a39bbaff4c5142a7bf5e8926ef327, type: 3}
   weaponSprites:
-  - {fileID: 532282208441007744, guid: 709a6a0861fe83642a98980c980deebf, type: 3}
-  - {fileID: -3863293170916784810, guid: 87230730f82ebc348982d4a0a0361d98, type: 3}
-  - {fileID: 2868684467218627296, guid: 5598afdbfdfffe14a9378f3d79938ba2, type: 3}
-  - {fileID: -1843576385993365262, guid: e5842179d0b42034a8c9bae629c4102c, type: 3}
+  - {fileID: -8615323330652010578, guid: 5705900ea17adae4b9803f47bb6a73d9, type: 3}
+  - {fileID: -2976184978006408520, guid: bde665205639c2d469b2612853ad7ef6, type: 3}
+  - {fileID: 2990146154647488063, guid: 9edb14930db974b47889ab67b7192221, type: 3}
+  - {fileID: 2605756565826460029, guid: f83852d983e2b284bab53c0319f1b8cc, type: 3}
   - {fileID: 2419421357277419991, guid: e943cba8044f89c4aa2cceeef596f489, type: 3}
   - {fileID: -6308796167728847078, guid: b7238d934575fb34ba84dc556efd265e, type: 3}
-  - {fileID: -7349101797620711388, guid: dc10968237aac8e48a99b03e4437b5c4, type: 3}
-  - {fileID: -1854023864724949808, guid: aa69dba62a35ec146a1b7034c3b9500e, type: 3}
-  - {fileID: -5270893012198345702, guid: a8b7b248669206c4da8e04e7c5967c30, type: 3}
-  - {fileID: 8420485207997377320, guid: e7ce935e41907c949ac7513d0176cba0, type: 3}
+  - {fileID: 8180320953220700661, guid: aa10f06843ced114c9e7e17ea2d13f63, type: 3}
+  - {fileID: -5195278561642766639, guid: 4c31876a4f2d2b740a79c8ae8ad33bce, type: 3}
+  - {fileID: -7290066020642774573, guid: d53e8b6075699f244b56e47834faf73e, type: 3}
+  - {fileID: 1384307969618782483, guid: eb4b32804b1ba5a489b79971f62649dc, type: 3}
 --- !u!4 &541914401
 Transform:
   m_ObjectHideFlags: 0
@@ -1323,6 +1323,7 @@ GameObject:
   - component: {fileID: 819835025}
   - component: {fileID: 819835024}
   - component: {fileID: 819835023}
+  - component: {fileID: 819835028}
   - component: {fileID: 819835022}
   - component: {fileID: 819835026}
   - component: {fileID: 819835027}
@@ -1506,6 +1507,43 @@ MonoBehaviour:
   _ammo: {fileID: 5751601113763993381, guid: cbfe375eda984e5be8b002ecaab029e0, type: 3}
   _ammoSpeed: 7
   _ammoCooldown: 6
+  _contactRange: 0
+--- !u!58 &819835028
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819835021}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 3
 --- !u!1 &872364924
 GameObject:
   m_ObjectHideFlags: 0

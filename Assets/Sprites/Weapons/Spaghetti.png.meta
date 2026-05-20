@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e5842179d0b42034a8c9bae629c4102c
+guid: f83852d983e2b284bab53c0319f1b8cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1843576385993365262
-    second: image 130_0
+      213: 2605756565826460029
+    second: Spaghetti_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image 130_0
+      name: Spaghetti_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f8219c6b0d4a66e0800000000000000
-      internalID: -1843576385993365262
+      spriteID: d795a3d6ac1892420800000000000000
+      internalID: 2605756565826460029
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image 130_0: -1843576385993365262
+      Spaghetti_0: 2605756565826460029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
