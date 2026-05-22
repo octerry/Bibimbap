@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 23ab9bc730fba5a4da93ee1a05c7b654
+guid: e241fb5e1e7cbad49b7726879c8f81ae
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3292365953421310427
-    second: Group 104_0
+      213: 4812547634034077359
+    second: ToileAraigne01_0
+  - first:
+      213: -2194211713987050571
+    second: ToileAraigne01_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Group 104_0
+      name: ToileAraigne01_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 192
-        height: 264
+        y: 1777
+        width: 577
+        height: 204
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd974441465d0bd20800000000000000
-      internalID: 3292365953421310427
+      spriteID: fae6f3f339a99c240800000000000000
+      internalID: 4812547634034077359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ToileAraigne01_1
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 705
+        width: 1428
+        height: 1295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b30dc152189c81e0800000000000000
+      internalID: -2194211713987050571
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Group 104_0: 3292365953421310427
+      ToileAraigne01_0: 4812547634034077359
+      ToileAraigne01_1: -2194211713987050571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
