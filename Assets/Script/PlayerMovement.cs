@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Animator _animator;
+    
     [SerializeField] private InputActionAsset Actions;
     private InputAction moveAction, jumpAction;
 
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        _animator = transform.Find("PJ").GetComponent<Animator>();
+        
         rb = GetComponent<Rigidbody2D>();
         gameOverObject = canvas.transform.Find("Gameoverscreen").gameObject;
         _playerShoot = GetComponent<PlayerShootSystem>();
@@ -43,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        _animator.SetBool("isRunning", moving);
+        _animator.SetBool("isJumping", jumping);
+        
         if (moving)
         {
             if (MathF.Abs(rb.linearVelocity.x) < maxSpeed || (direction.x>0 ^ rb.linearVelocityX>0))
