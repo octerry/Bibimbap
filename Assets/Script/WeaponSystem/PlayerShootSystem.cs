@@ -39,7 +39,8 @@ public class PlayerShootSystem : MonoBehaviour
     {
         _cam = Camera.main;
         _shootCursor = transform.Find("ShootCursor");
-        _shootImage = _shootCursor.Find("ShootImage").GetComponent<SpriteRenderer>();
+        _shootImage = GameObject.Find("ShootImage").GetComponent<SpriteRenderer>();
+        _shootImage.sprite = null;
         _ammoTimeRef = Time.time - _ammoCooldown;
     }
 
@@ -75,8 +76,8 @@ public class PlayerShootSystem : MonoBehaviour
             
             point = _cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
         
-            float x = point.x - transform.position.x;
-            float y = point.y - transform.position.y;
+            float x = point.x - _shootCursor.transform.position.x;
+            float y = point.y - _shootCursor.transform.position.y;
         
             _angle = MathF.Atan2(y, x); 
             
@@ -128,8 +129,8 @@ public class PlayerShootSystem : MonoBehaviour
             
                     // On le mets à la position du joueur
                     Vector3 newPos = bullet.transform.position;
-                    newPos.x = transform.position.x + (direction.x/_ammoSpeed * transform.localScale.x);
-                    newPos.y = transform.position.y + (direction.y/_ammoSpeed * transform.localScale.y);
+                    newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * _shootCursor.transform.localScale.x);
+                    newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * _shootCursor.transform.localScale.y);
                     bullet.transform.position = newPos;
             
                     // On lui donne de la vitesse
@@ -151,8 +152,8 @@ public class PlayerShootSystem : MonoBehaviour
                     bulletSystem.duration = 30f;
             
                     Vector3 newPos = bullet.transform.position;
-                    newPos.x = transform.position.x + (direction.x/_ammoSpeed * transform.localScale.x);
-                    newPos.y = transform.position.y + (direction.y/_ammoSpeed * transform.localScale.y);
+                    newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * transform.localScale.x);
+                    newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * transform.localScale.y);
                     bullet.transform.position = newPos;
             
                     bullet.GetComponent<Rigidbody2D>().linearVelocity = direction;
@@ -181,7 +182,7 @@ public class PlayerShootSystem : MonoBehaviour
                     float minBound = _angle - _contactRange / 2;
 
                     GameObject attack = Instantiate(_closeAttack);
-                    attack.transform.position = transform.position;
+                    attack.transform.position = _shootCursor.transform.position;
                     CloseAttack closeAttack = attack.GetComponent<CloseAttack>();
                     closeAttack.angle = _angle;
                     closeAttack.contactRange = _contactRange;
