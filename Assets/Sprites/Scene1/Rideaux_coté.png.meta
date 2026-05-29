@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: e241fb5e1e7cbad49b7726879c8f81ae
+guid: 90caee34bf8d1ee4d8da2ee3c897e329
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4812547634034077359
-    second: ToileAraigne01_0
+      213: 2328821822854033796
+    second: "Rideaux_cot\xE9_0"
   - first:
-      213: -2194211713987050571
-    second: ToileAraigne01_1
+      213: 1909466552327554196
+    second: "Rideaux_cot\xE9_1"
+  - first:
+      213: 710456334035328048
+    second: "Rideaux_cot\xE9_2"
+  - first:
+      213: 4996170269856679175
+    second: "Rideaux_cot\xE9_3"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ToileAraigne01_0
+      name: "Rideaux_cot\xE9_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2000
-        height: 2000
+        width: 2486
+        height: 3520
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +124,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fae6f3f339a99c240800000000000000
-      internalID: 4812547634034077359
+      spriteID: 4817468fb13a15020800000000000000
+      internalID: 2328821822854033796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Rideaux_cot\xE9_1"
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 0
+        width: 2486
+        height: 3520
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012e3b2d2533134438b58ded0e56edc4
+      internalID: 182290981
       vertices: []
       indices: 
       edges: []
@@ -141,7 +156,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ae3403131dbc83044bfcb0059d16cc68
+    spriteID: 8b3ff7edabfdad9418a618025d6929c5
     internalID: 0
     vertices: []
     indices: 
@@ -151,9 +166,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":2000.0,"y":2000.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":2486.0,"y":3520.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      ToileAraigne01_0: 4812547634034077359
+      "Rideaux_cot\xE9_0": 2328821822854033796
+      "Rideaux_cot\xE9_1": 182290981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
