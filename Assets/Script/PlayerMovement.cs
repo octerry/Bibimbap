@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private Transform _pj;
     private Animator _animator;
     
     [SerializeField] private InputActionAsset Actions;
@@ -18,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerShootSystem _playerShoot;
     [SerializeField] private WeaponSpawn _weaponSpawn;
-
-    private Transform _pj;
     
     private Rigidbody2D _rb;
     private Collider2D _mainCollider;
