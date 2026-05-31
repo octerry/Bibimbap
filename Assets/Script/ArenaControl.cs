@@ -15,16 +15,17 @@ public class ArenaControl : MonoBehaviour
     [SerializeField] private Vector2 _staticAreaCenter;
     [SerializeField] private float _staticAreaHeight;
 
-    [SerializeField] private Transform _leftBorder;
+    [SerializeField] private Transform[] _arenas;
+    private Transform _leftBorder;
     private SpriteRenderer _leftBorderSpriteRenderer;
     private float _leftBorderStartPosition;
-    [SerializeField] private Transform _rightBorder;
+    private Transform _rightBorder;
     private SpriteRenderer _rightBorderSpriteRenderer;
     private float _rightBorderStartPosition;
-    [SerializeField] private Transform _topBorder;
+    private Transform _topBorder;
     private SpriteRenderer _topBorderSpriteRenderer;
     private float _topBorderStartPosition;
-    [SerializeField] private Transform _bottomBorder;
+    private Transform _bottomBorder;
     private SpriteRenderer _bottomBorderSpriteRenderer;
     private float _bottomBorderStartPosition;
 
@@ -49,6 +50,11 @@ public class ArenaControl : MonoBehaviour
         _bigAreaCameraHeight = 2f * _mainCam.orthographicSize;
         _staticCameraZoom = _staticAreaHeight / _bigAreaCameraHeight;
 
+        _leftBorder = _arenas[0].Find("Borders").Find("LeftBorder");
+        _rightBorder = _arenas[0].Find("Borders").Find("RightBorder");
+        _topBorder = _arenas[0].Find("Borders").Find("TopBorder");
+        _bottomBorder = _arenas[0].Find("Borders").Find("BottomBorder");
+        
         _leftBorderSpriteRenderer = _leftBorder.GetComponent<SpriteRenderer>();
         _rightBorderSpriteRenderer = _rightBorder.GetComponent<SpriteRenderer>();
         _topBorderSpriteRenderer = _topBorder.GetComponent<SpriteRenderer>();

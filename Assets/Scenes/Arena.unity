@@ -230,7 +230,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.10588236, g: 0.10980393, b: 0.10588236, a: 1}
@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 30661439}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 49.38, z: 0}
+  m_LocalPosition: {x: 0.45, y: 49.38, z: -5}
   m_LocalScale: {x: 71.99395, y: -8.141125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7156,10 +7156,8 @@ MonoBehaviour:
   _ennemiesParent: {fileID: 964510729}
   _staticAreaCenter: {x: 5.58, y: 0.07}
   _staticAreaHeight: 16.7
-  _leftBorder: {fileID: 1827381830}
-  _rightBorder: {fileID: 1835823102}
-  _topBorder: {fileID: 30661442}
-  _bottomBorder: {fileID: 1798927435}
+  _arenas:
+  - {fileID: 1532755148}
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -9319,6 +9317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1532755148}
+  - component: {fileID: 1532755149}
   m_Layer: 0
   m_Name: Arene1
   m_TagString: Untagged
@@ -9349,6 +9348,18 @@ Transform:
   - {fileID: 1390512835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1532755149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532755147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08ea1d802a1f8d41b8409a05bf5fbdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1549153687
 GameObject:
   m_ObjectHideFlags: 0
@@ -10420,7 +10431,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.10588236, g: 0.10980393, b: 0.10588236, a: 1}
@@ -10441,7 +10452,7 @@ Transform:
   m_GameObject: {fileID: 1798927432}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33715, y: 25.828888, z: 0}
+  m_LocalPosition: {x: 0.33715, y: 25.828888, z: -5}
   m_LocalScale: {x: 69.58515, y: 6.056493, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10558,7 +10569,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.10588236, g: 0.10980393, b: 0.10588236, a: 1}
@@ -10579,7 +10590,7 @@ Transform:
   m_GameObject: {fileID: 1827381827}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.76285, y: 37.13759, z: 0}
+  m_LocalPosition: {x: -26.76285, y: 37.13759, z: -5}
   m_LocalScale: {x: 8.682239, y: 53.461494, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10696,7 +10707,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.10588236, g: 0.10980393, b: 0.10588236, a: 1}
@@ -10717,7 +10728,7 @@ Transform:
   m_GameObject: {fileID: 1835823099}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.13715, y: 37.13759, z: 0}
+  m_LocalPosition: {x: 27.13715, y: 37.13759, z: -5}
   m_LocalScale: {x: 8.015518, y: 53.686848, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10793,7 +10804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1896343103}
   m_Layer: 0
-  m_Name: Borders_A1
+  m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12356,10 +12367,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 1701557375}
   - {fileID: 819835025}
+  - {fileID: 785177825}
   - {fileID: 1532755148}
   - {fileID: 1031715547}
   - {fileID: 1785163245}
-  - {fileID: 785177825}
   - {fileID: 2057395005}
   - {fileID: 214614729034401874}
   - {fileID: 967254176}
