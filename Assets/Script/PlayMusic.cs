@@ -11,8 +11,11 @@ public class PlayMusic : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = _musicIntro;
-        _audioSource.Play();
+        if (_musicIntro) 
+        {
+            _audioSource.clip = _musicIntro;
+            _audioSource.Play();
+        }
     }
 
     private void Update()
