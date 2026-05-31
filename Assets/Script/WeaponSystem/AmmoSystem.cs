@@ -34,14 +34,17 @@ public class AmmoSystem : MonoBehaviour
 
     void Update()
     {
-        if ( (Time.time - _spawnTime) >= duration)
+        if (GlobalSettings.gameRunning)
         {
-            if (explosion && !explodeOnContact)
+            if ( (Time.time - _spawnTime) >= duration)
             {
-                GameObject explosion = Instantiate(_explosionObject);
-                explosion.transform.position = transform.position;
+                if (explosion && !explodeOnContact)
+                {
+                    GameObject explosion = Instantiate(_explosionObject);
+                    explosion.transform.position = transform.position;
+                }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
     

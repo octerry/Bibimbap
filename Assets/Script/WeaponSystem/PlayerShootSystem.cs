@@ -46,149 +46,158 @@ public class PlayerShootSystem : MonoBehaviour
 
     void Update()
     {
-        _shootCursor.rotation = Quaternion.Euler(0, 0, _angle * Mathf.Rad2Deg);
+        if (GlobalSettings.gameRunning)
+        {
+            _shootCursor.rotation = Quaternion.Euler(0, 0, _angle * Mathf.Rad2Deg);
 
-        if (_ammoTimeRef > Time.time)
-        {
-            _shootCursor.gameObject.SetActive(false);
-        }
-        else
-        {
-            _shootCursor.gameObject.SetActive(true);
+            if (_ammoTimeRef > Time.time)
+            {
+                _shootCursor.gameObject.SetActive(false);
+            }
+            else
+            {
+                _shootCursor.gameObject.SetActive(true);
+            }
         }
     }
     
     void OnGUI()
-    { 
-        // Je l'ai piqué à la docu Unity
-        Vector3 point = new Vector3();
-        Event   currentEvent = Event.current;
-        Vector2 mousePos = new Vector2();
-
-        // Get the mouse position from Event.
-        // Note that the y position from Event is inverted.
-        mousePos.x = currentEvent.mousePosition.x;
-        mousePos.y = _cam.pixelHeight - currentEvent.mousePosition.y;
-
-        if (mousePos != _lastMousePos)
+    {
+        if (GlobalSettings.gameRunning)
         {
-            Cursor.visible = true;
+            // Je l'ai piqué à la docu Unity
+            Vector3 point = new Vector3();
+            Event   currentEvent = Event.current;
+            Vector2 mousePos = new Vector2();
+
+            // Get the mouse position from Event.
+            // Note that the y position from Event is inverted.
+            mousePos.x = currentEvent.mousePosition.x;
+            mousePos.y = _cam.pixelHeight - currentEvent.mousePosition.y;
+
+            if (mousePos != _lastMousePos)
+            {
+                Cursor.visible = true;
             
-            point = _cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
+                point = _cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _cam.nearClipPlane));
         
-            float x = point.x - _shootCursor.transform.position.x;
-            float y = point.y - _shootCursor.transform.position.y;
+                float x = point.x - _shootCursor.transform.position.x;
+                float y = point.y - _shootCursor.transform.position.y;
         
-            _angle = MathF.Atan2(y, x); 
+                _angle = MathF.Atan2(y, x); 
             
-            _lastMousePos = mousePos;
+                _lastMousePos = mousePos;
+            }
         }
     }
 
     void TriggerCheck(InputAction.CallbackContext phase)
     {
-        if (!phase.canceled && !(_ammoTimeRef > Time.time))
+        if (GlobalSettings.gameRunning)
         {
-            Vector2 direction = new Vector2();
-            direction.x = MathF.Cos(_angle) * _ammoSpeed;
-            direction.y = MathF.Sin(_angle) * _ammoSpeed;
-            
-            switch (_currentAmmoType)
+            if (!phase.canceled && !(_ammoTimeRef > Time.time))
             {
-                case AmmoSystem.ammoType.PopCorn:
+                Vector2 direction = new Vector2();
+                direction.x = MathF.Cos(_angle) * _ammoSpeed;
+                direction.y = MathF.Sin(_angle) * _ammoSpeed;
+                
+                switch (_currentAmmoType)
                 {
+                    case AmmoSystem.ammoType.PopCorn:
+                    {
 
-                    break;
-                }
-                case AmmoSystem.ammoType.RoquetteLauncher:
-                {
+                        break;
+                    }
+                    case AmmoSystem.ammoType.RoquetteLauncher:
+                    {
 
-                    break;
-                }
-                case AmmoSystem.ammoType.Yogurt:
-                {
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Yogurt:
+                    {
 
-                    break;
-                }
-                case AmmoSystem.ammoType.Spaghetti:
-                {
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Spaghetti:
+                    {
 
-                    break;
-                }
-                case AmmoSystem.ammoType.Pomegranate:
-                {
-                    // On créé l'objet
-                    GameObject bullet = Instantiate(_ammo);
-                    AmmoSystem bulletSystem = bullet.GetComponent<AmmoSystem>();
-                    
-                    // On lui donne les paramètre qui correspondent
-                    bulletSystem.currentAmmoType = AmmoSystem.ammoType.PotatoLauncher;
-                    bulletSystem.explosion = true;
-                    bulletSystem.explodeOnContact = false;
-                    bulletSystem.duration = 4f;
-            
-                    // On le mets à la position du joueur
-                    Vector3 newPos = bullet.transform.position;
-                    newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * _shootCursor.transform.localScale.x);
-                    newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * _shootCursor.transform.localScale.y);
-                    bullet.transform.position = newPos;
-            
-                    // On lui donne de la vitesse
-                    bullet.GetComponent<Rigidbody2D>().linearVelocity = direction;
-                    
-                    // On réinitialise le timer
-                    _ammoTimeRef = Time.time + _ammoCooldown;
-                    
-                    break;
-                }
-                case AmmoSystem.ammoType.PotatoLauncher:
-                {
-                    GameObject bullet = Instantiate(_ammo);
-                    AmmoSystem bulletSystem = bullet.GetComponent<AmmoSystem>();
-                    
-                    bulletSystem.currentAmmoType = AmmoSystem.ammoType.PotatoLauncher;
-                    bulletSystem.explosion = true;
-                    bulletSystem.explodeOnContact = true;
-                    bulletSystem.duration = 30f;
-            
-                    Vector3 newPos = bullet.transform.position;
-                    newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * transform.localScale.x);
-                    newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * transform.localScale.y);
-                    bullet.transform.position = newPos;
-            
-                    bullet.GetComponent<Rigidbody2D>().linearVelocity = direction;
-                    _ammoTimeRef = Time.time + _ammoCooldown;
-                    
-                    break;
-                }
-                case AmmoSystem.ammoType.Toast:
-                {
-                    
-                    break;
-                }
-                case AmmoSystem.ammoType.Starfruit:
-                {
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Pomegranate:
+                    {
+                        // On créé l'objet
+                        GameObject bullet = Instantiate(_ammo);
+                        AmmoSystem bulletSystem = bullet.GetComponent<AmmoSystem>();
+                        
+                        // On lui donne les paramètre qui correspondent
+                        bulletSystem.currentAmmoType = AmmoSystem.ammoType.PotatoLauncher;
+                        bulletSystem.explosion = true;
+                        bulletSystem.explodeOnContact = false;
+                        bulletSystem.duration = 4f;
+                
+                        // On le mets à la position du joueur
+                        Vector3 newPos = bullet.transform.position;
+                        newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * _shootCursor.transform.localScale.x);
+                        newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * _shootCursor.transform.localScale.y);
+                        bullet.transform.position = newPos;
+                
+                        // On lui donne de la vitesse
+                        bullet.GetComponent<Rigidbody2D>().linearVelocity = direction;
+                        
+                        // On réinitialise le timer
+                        _ammoTimeRef = Time.time + _ammoCooldown;
+                        
+                        break;
+                    }
+                    case AmmoSystem.ammoType.PotatoLauncher:
+                    {
+                        GameObject bullet = Instantiate(_ammo);
+                        AmmoSystem bulletSystem = bullet.GetComponent<AmmoSystem>();
+                        
+                        bulletSystem.currentAmmoType = AmmoSystem.ammoType.PotatoLauncher;
+                        bulletSystem.explosion = true;
+                        bulletSystem.explodeOnContact = true;
+                        bulletSystem.duration = 30f;
+                
+                        Vector3 newPos = bullet.transform.position;
+                        newPos.x = _shootCursor.transform.position.x + (direction.x/_ammoSpeed * transform.localScale.x);
+                        newPos.y = _shootCursor.transform.position.y + (direction.y/_ammoSpeed * transform.localScale.y);
+                        bullet.transform.position = newPos;
+                
+                        bullet.GetComponent<Rigidbody2D>().linearVelocity = direction;
+                        _ammoTimeRef = Time.time + _ammoCooldown;
+                        
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Toast:
+                    {
+                        
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Starfruit:
+                    {
 
-                    break;
-                }
-                case AmmoSystem.ammoType.Roquefort:
-                {
-                    
-                    break;
-                }
-                case AmmoSystem.ammoType.Baguette:
-                {
-                    float maxBound = _angle + _contactRange / 2;
-                    float minBound = _angle - _contactRange / 2;
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Roquefort:
+                    {
+                        
+                        break;
+                    }
+                    case AmmoSystem.ammoType.Baguette:
+                    {
+                        float maxBound = _angle + _contactRange / 2;
+                        float minBound = _angle - _contactRange / 2;
 
-                    GameObject attack = Instantiate(_closeAttack);
-                    attack.transform.position = _shootCursor.transform.position;
-                    CloseAttack closeAttack = attack.GetComponent<CloseAttack>();
-                    closeAttack.angle = _angle;
-                    closeAttack.contactRange = _contactRange;
-                    closeAttack.direction = direction;
+                        GameObject attack = Instantiate(_closeAttack);
+                        attack.transform.position = _shootCursor.transform.position;
+                        CloseAttack closeAttack = attack.GetComponent<CloseAttack>();
+                        closeAttack.angle = _angle;
+                        closeAttack.contactRange = _contactRange;
+                        closeAttack.direction = direction;
 
-                    break;
+                        break;
+                    }
                 }
             }
         }
@@ -196,11 +205,14 @@ public class PlayerShootSystem : MonoBehaviour
 
     void AimCheck(InputAction.CallbackContext phase)
     {
-        Cursor.visible = false;
+        if (GlobalSettings.gameRunning)
+        {
+            Cursor.visible = false;
         
-        Vector2 direction = phase.ReadValue<Vector2>();
+            Vector2 direction = phase.ReadValue<Vector2>();
         
-        _angle = Mathf.Atan2(direction.y, direction.x);
+            _angle = Mathf.Atan2(direction.y, direction.x);
+        }
     }
 
     public void ChangeWeaponType(AmmoSystem.ammoType weaponType)

@@ -2,44 +2,53 @@ using UnityEngine;
 
 public class JumperBehavior : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
-    private Vector3 playerPosition = new Vector3(0f,0f);
+    [SerializeField] private GameObject _player;
+    private Vector3 _playerPosition = new Vector3(0f,0f);
 
-    [SerializeField] private float jumpWidth;
-    [SerializeField] private float jumpHeight;
-    [SerializeField] private float jumpWaitSeconds;
-    private Rigidbody2D rb;
-    private float startTime;
-    private Vector2 objectif = new Vector2(0f, 0f);
-    private Vector2 direction = new Vector2(0f,0f);
+    [SerializeField] private float _jumpWidth;
+    [SerializeField] private float _jumpHeight;
+    [SerializeField] private float _jumpWaitSeconds;
+    private Rigidbody2D _rb;
+    private float _startTime;
+    private Vector2 _objectif = new Vector2(0f, 0f);
+    private Vector2 _direction = new Vector2(0f,0f);
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        playerPosition = Player.transform.position;
-        JumpCheck();
+        if (GlobalSettings.gameRunning)
+        {
+            _rb.simulated = true;
+            
+            _playerPosition = _player.transform.position;
+            JumpCheck();
+        }
+        else
+        {
+            _rb.simulated = false;
+        }
     }
 
     void JumpCheck()
     {
-        objectif.x = playerPosition.x - transform.position.x;
-        objectif.y = playerPosition.y - transform.position.y;
+        _objectif.x = _playerPosition.x - transform.position.x;
+        _objectif.y = _playerPosition.y - transform.position.y;
         
-        direction.x = objectif.x;
-        direction.y = objectif.y*2;
+        _direction.x = _objectif.x;
+        _direction.y = _objectif.y*2;
         
-        if (direction.x > jumpWidth) direction.x = jumpWidth;
-        if (direction.y > jumpHeight) direction.y = jumpHeight;
+        if (_direction.x > _jumpWidth) _direction.x = _jumpWidth;
+        if (_direction.y > _jumpHeight) _direction.y = _jumpHeight;
 
-        if (startTime < Time.time)
+        if (_startTime < Time.time)
         {
-            rb.linearVelocityX = direction.x;
-            rb.linearVelocityY = direction.y;
-            startTime = Time.time + jumpWaitSeconds;
+            _rb.linearVelocityX = _direction.x;
+            _rb.linearVelocityY = _direction.y;
+            _startTime = Time.time + _jumpWaitSeconds;
         }
     }
 }

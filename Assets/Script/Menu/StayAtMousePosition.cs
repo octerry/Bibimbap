@@ -10,19 +10,22 @@ public class StayAtMousePosition : MonoBehaviour
     }
 
     void OnGUI()
-    { 
-        // Je l'ai piqué à la docu Unity
-        Vector3 point = new Vector3();
-        Event   currentEvent = Event.current;
-        Vector2 mousePos = new Vector2();
+    {
+        if (GlobalSettings.gameRunning)
+        {
+            // Je l'ai piqué à la docu Unity
+            Vector3 point = new Vector3();
+            Event   currentEvent = Event.current;
+            Vector2 mousePos = new Vector2();
 
-        // Get the mouse position from Event.
-        // Note that the y position from Event is inverted.
-        mousePos.x = currentEvent.mousePosition.x;
-        mousePos.y = cam.pixelHeight - currentEvent.mousePosition.y;
+            // Get the mouse position from Event.
+            // Note that the y position from Event is inverted.
+            mousePos.x = currentEvent.mousePosition.x;
+            mousePos.y = cam.pixelHeight - currentEvent.mousePosition.y;
 
-        point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+            point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
         
-        transform.position = point;
+            transform.position = point;
+        }
     }
 }

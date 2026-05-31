@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca7276d60e2e5b4aadd72a4d4745088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrawlerBehavior
-  Player: {fileID: 0}
-  acceleration: 10
-  maxSpeed: 8
+  _player: {fileID: 0}
+  _acceleration: 5
+  _maxSpeed: 10
 --- !u!70 &7382537118901379823
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

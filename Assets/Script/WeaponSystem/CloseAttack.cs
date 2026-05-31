@@ -18,20 +18,23 @@ public class CloseAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (var ennemy in _closeEnnemies)
+        if (GlobalSettings.gameRunning)
         {
-            float x = ennemy.transform.position.x - transform.position.x;
-            float y = ennemy.transform.position.y - transform.position.y;
-
-            float ennemyAngle = Mathf.Atan2(y, x);
-
-            bool minBound = ennemyAngle > angle - contactRange / 2;
-            bool maxBound = ennemyAngle < angle + contactRange / 2 ||
-                            ennemyAngle < angle + contactRange / 2 + (Math.PI * 2);
-            
-            if (minBound && maxBound)
+            foreach (var ennemy in _closeEnnemies)
             {
-                ennemy.GetComponent<Creature>().Die(direction);
+                float x = ennemy.transform.position.x - transform.position.x;
+                float y = ennemy.transform.position.y - transform.position.y;
+
+                float ennemyAngle = Mathf.Atan2(y, x);
+
+                bool minBound = ennemyAngle > angle - contactRange / 2;
+                bool maxBound = ennemyAngle < angle + contactRange / 2 ||
+                                ennemyAngle < angle + contactRange / 2 + (Math.PI * 2);
+            
+                if (minBound && maxBound)
+                {
+                    ennemy.GetComponent<Creature>().Die(direction);
+                }
             }
         }
     }

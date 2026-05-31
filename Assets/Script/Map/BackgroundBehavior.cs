@@ -67,34 +67,37 @@ public class BackgroundBehavior : MonoBehaviour
 
     void Update()
     {
-        Vector3 newPosition = _bgImage.position;
-        newPosition.x = _mainCam.transform.position.x * _factorX;
-        newPosition.y = _mainCam.transform.position.y * _factorY;
-        _bgImage.position = newPosition;
+        if (GlobalSettings.gameRunning)
+        {
+            Vector3 newPosition = _bgImage.position;
+            newPosition.x = _mainCam.transform.position.x * _factorX;
+            newPosition.y = _mainCam.transform.position.y * _factorY;
+            _bgImage.position = newPosition;
 
-        Vector2 imageScale = _bgImageSpriteRenderer.bounds.size;
+            Vector2 imageScale = _bgImageSpriteRenderer.bounds.size;
         
-        _imageTL = new Vector2(_bgImage.position.x + imageScale.x / 2, _bgImage.position.y + imageScale.y / 2);
-        _imageTR = new Vector2(_bgImage.position.x - imageScale.x / 2, _bgImage.position.y + imageScale.y / 2);
-        _imageBR = new Vector2(_bgImage.position.x - imageScale.x / 2, _bgImage.position.y - imageScale.y / 2);
-        _imageBL = new Vector2(_bgImage.position.x + imageScale.x / 2, _bgImage.position.y - imageScale.y / 2);
+            _imageTL = new Vector2(_bgImage.position.x + imageScale.x / 2, _bgImage.position.y + imageScale.y / 2);
+            _imageTR = new Vector2(_bgImage.position.x - imageScale.x / 2, _bgImage.position.y + imageScale.y / 2);
+            _imageBR = new Vector2(_bgImage.position.x - imageScale.x / 2, _bgImage.position.y - imageScale.y / 2);
+            _imageBL = new Vector2(_bgImage.position.x + imageScale.x / 2, _bgImage.position.y - imageScale.y / 2);
         
-        _topPart.spline.SetPosition(0, _imageTL);
-        _topPart.spline.SetPosition(1, _imageTR);
+            _topPart.spline.SetPosition(0, _imageTL);
+            _topPart.spline.SetPosition(1, _imageTR);
         
-        _rightPart.spline.SetPosition(0, _imageBR);
-        _rightPart.spline.SetPosition(1, _imageTR);
+            _rightPart.spline.SetPosition(0, _imageBR);
+            _rightPart.spline.SetPosition(1, _imageTR);
         
-        _bottomPart.spline.SetPosition(0, _imageBL);
-        _bottomPart.spline.SetPosition(1, _imageBR);
+            _bottomPart.spline.SetPosition(0, _imageBL);
+            _bottomPart.spline.SetPosition(1, _imageBR);
         
-        _leftPart.spline.SetPosition(0, _imageTL);
-        _leftPart.spline.SetPosition(1, _imageBL);
+            _leftPart.spline.SetPosition(0, _imageTL);
+            _leftPart.spline.SetPosition(1, _imageBL);
         
-        _topPart.RefreshSpriteShape(); 
-        _rightPart.RefreshSpriteShape();
-        _bottomPart.RefreshSpriteShape();
-        _leftPart.RefreshSpriteShape();
+            _topPart.RefreshSpriteShape(); 
+            _rightPart.RefreshSpriteShape();
+            _bottomPart.RefreshSpriteShape();
+            _leftPart.RefreshSpriteShape();
+        }
     }
 
     void OnDrawGizmos()

@@ -23,12 +23,15 @@ public class Parallax : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < _layers.Length; i++)
+        if (GlobalSettings.gameRunning)
         {
-            Vector3 newPos = _layers[i].transform.position;
-            newPos.x = _mainCam.transform.position.x / (_distance / (i+1));
-            newPos.y = _mainCam.transform.position.y / (_distance / (i+1));
-            _layers[i].transform.position = newPos;
+            for (int i = 0; i < _layers.Length; i++)
+            {
+                Vector3 newPos = _layers[i].transform.position;
+                newPos.x = _mainCam.transform.position.x / (_distance / (i+1));
+                newPos.y = _mainCam.transform.position.y / (_distance / (i+1));
+                _layers[i].transform.position = newPos;
+            }
         }
     }
 }

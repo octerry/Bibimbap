@@ -21,15 +21,18 @@ public class ExplosionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > _explosionCountdown + _startTime)
+        if (GlobalSettings.gameRunning)
         {
-            Destroy(_renderer);
-            Destroy(_coll);
-        }
+            if (Time.time > _explosionCountdown + _startTime)
+            {
+                Destroy(_renderer);
+                Destroy(_coll);
+            }
 
-        if (Time.time > _explosionCountdown + _startTime + 1)
-        {
-            Destroy(gameObject);
+            if (Time.time > _explosionCountdown + _startTime + 1)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     

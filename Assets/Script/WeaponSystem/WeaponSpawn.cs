@@ -30,18 +30,21 @@ public class WeaponSpawn : MonoBehaviour
     
     void Update()
     {
-        if (_weaponsNumber < _maxWeapons)
+        if (GlobalSettings.gameRunning)
         {
-            int chosen = Random.Range(0, transform.childCount);
-            // while (_hasAWeapon[chosen])
-            // {
-            //     chosen = Random.Range(0, transform.childCount);
-            // }
+            if (_weaponsNumber < _maxWeapons)
+            {
+                int chosen = Random.Range(0, transform.childCount);
+                // while (_hasAWeapon[chosen])
+                // {
+                //     chosen = Random.Range(0, transform.childCount);
+                // }
 
-            _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen], chosen, _spawnPointElements[chosen].GetSpawnableWeapons());
-            _hasAWeapon[chosen] = true;
+                _weaponComponent.AddRandomWeaponAt(_spawnpoints[chosen], chosen, _spawnPointElements[chosen].GetSpawnableWeapons());
+                _hasAWeapon[chosen] = true;
 
-            _weaponsNumber++;
+                _weaponsNumber++;
+            }
         }
     }
 

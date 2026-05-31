@@ -38,9 +38,12 @@ public class ArenaControl : MonoBehaviour
     
     void OnEnable()
     {
-        _actions.Enable();
-        _cheatAction = _actions.FindAction("CheatCode");
-        _cheatAction.started += CheatCheck;
+        if (GlobalSettings.gameRunning)
+        {
+            _actions.Enable();
+            _cheatAction = _actions.FindAction("CheatCode");
+            _cheatAction.started += CheatCheck;
+        }
     }
     
     void Start()

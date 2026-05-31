@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private WeaponSpawn _weaponSpawn;
     
     private Rigidbody2D _rb;
+    private Vector2 _currentVelocity;
     private Collider2D _mainCollider;
     private Vector2 _direction;
     private bool _movingX = false;
@@ -63,70 +64,84 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        _animator.SetBool("isRunning", _movingX);
+        if (GlobalSettings.gameRunning)
+        {
+            _rb.simulated = true;
+            _animator.SetBool("isRunning", _movingX);
 
-        bool hit = Physics2D.Raycast(transform.position, Vector2.down, _raycastHeight, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position, Vector2.down * _raycastHeight, Color.red);
+            bool hit = Physics2D.Raycast(transform.position, Vector2.down, _raycastHeight, LayerMask.GetMask("Ground"));
+            Debug.DrawRay(transform.position, Vector2.down * _raycastHeight, Color.red);
         
-        if (_movingX)
-        {
-            if (MathF.Abs(_rb.linearVelocity.x) < _maxSpeed || (_direction.x>0 ^ _rb.linearVelocityX>0))
-                _rb.linearVelocityX += _acceleration * _direction.x * Time.deltaTime;
-        }
+            if (_movingX)
+            {
+                if (MathF.Abs(_rb.linearVelocity.x) < _maxSpeed || (_direction.x > 0 ^ _rb.linearVelocityX > 0))
+                    _rb.linearVelocityX += _acceleration * _direction.x * Time.deltaTime;
+            }
 
-        if (!hit && _isGrounded) // Quand le joueur quitte le sol
-        {
-            _animator.SetBool("isGrounded", false);
-            _isGrounded = false;
-        }
+            if (!hit && _isGrounded) // Quand le joueur quitte le sol
+            {
+                _animator.SetBool("isGrounded", false);
+                _isGrounded = false;
+            }
 
-        if (hit && !_isGrounded) // Quand le joueur touche le sol
+            if (hit && !_isGrounded) // Quand le joueur touche le sol
+            {
+                _animator.SetBool("isGrounded", true);
+                _isGrounded = true;
+                _doubleJumpsRemaining = _doubleJumpMax;
+            }
+        }
+        else
         {
-            _animator.SetBool("isGrounded", true);
-            _isGrounded = true;
-            _doubleJumpsRemaining = _doubleJumpMax;
+            _rb.simulated = false;
         }
     }
     
     void MoveCheck(InputAction.CallbackContext phase)
     {
-        _direction = phase.ReadValue<Vector2>();
-        _direction = Vector2.ClampMagnitude(_direction, 1f);
-        if(phase.canceled || (MathF.Abs(_direction.x) < .1 && MathF.Abs(_direction.y) < .1))
+        if (GlobalSettings.gameRunning)
         {
-            _direction = Vector2.zero;
-            _movingX = false;
-        }
-        else
-        {
-            _movingX = false;
-            _movingY = false;
-            if ( MathF.Abs(_direction.x) > .1 )
+            _direction = phase.ReadValue<Vector2>();
+            _direction = Vector2.ClampMagnitude(_direction, 1f);
+            if(phase.canceled || (MathF.Abs(_direction.x) < .1 && MathF.Abs(_direction.y) < .1))
             {
-                _movingX = true;
-                
-                int directionVectorX = (int)(_direction.x / Mathf.Abs(_direction.x));
-                
-                Vector3 newScale = _pj.transform.localScale;
-                newScale.x = MathF.Abs(newScale.x) * directionVectorX;
-                _pj.transform.localScale = newScale;
+                _direction = Vector2.zero;
+                _movingX = false;
             }
-            if ( MathF.Abs(_direction.y) > .1 )
+            else
             {
-                _movingY = true;
+                _movingX = false;
+                _movingY = false;
+                if ( MathF.Abs(_direction.x) > .1 )
+                {
+                    _movingX = true;
+                
+                    int directionVectorX = (int)(_direction.x / Mathf.Abs(_direction.x));
+                
+                    Vector3 newScale = _pj.transform.localScale;
+                    newScale.x = MathF.Abs(newScale.x) * directionVectorX;
+                    _pj.transform.localScale = newScale;
+                }
+                if ( MathF.Abs(_direction.y) > .1 )
+                {
+                    _movingY = true;
+                }
             }
         }
     }
 
     void JumpCheck(InputAction.CallbackContext phase)
     {
-        if (_isGrounded || _doubleJumpsRemaining >= 0)
+        if (GlobalSettings.gameRunning)
         {
-            _animator.SetTrigger("jump");
-            _direction.y = 1;
-            _rb.linearVelocityY = _jumpHeight * _direction.y;
+            if (_isGrounded || _doubleJumpsRemaining >= 0)
+            {
+                _animator.SetTrigger("jump");
+                _direction.y = 1;
+                _rb.linearVelocityY = _jumpHeight * _direction.y;
 
-            if (!_isGrounded) _doubleJumpsRemaining--;
+                if (!_isGrounded) _doubleJumpsRemaining--;
+            }
         }
     }
 

@@ -3,43 +3,53 @@ using UnityEngine;
 
 public class FlyBehavior : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
-    private Vector3 playerPosition = new Vector3(0f,0f);
+    [SerializeField] private GameObject _player;
+    private Vector3 _playerPosition = new Vector3(0f,0f);
 
-    [SerializeField] private float acceleration;
-    [SerializeField] private float maxSpeed;
-    private Vector2 objectif;
-    private Vector2 movement;
-    private float angle;
-    private float speed;
+    [SerializeField] private float _acceleration;
+    [SerializeField] private float _maxSpeed;
+    private Vector2 _objectif;
+    private Vector2 _movement;
+    private float _angle;
+    private float _speed;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        playerPosition = Player.transform.position;
-        MoveCheck();
+        if (GlobalSettings.gameRunning)
+        {
+            _rb.simulated = true;
+            
+            _playerPosition = _player.transform.position;
+            MoveCheck();
+        }
+        else
+        {
+            _rb.simulated = false;
+        }
     }
 
     void MoveCheck()
     {
-        objectif.x = playerPosition.x - transform.position.x;
-        objectif.y = playerPosition.y - transform.position.y;
+        _objectif.x = _playerPosition.x - transform.position.x;
+        _objectif.y = _playerPosition.y - transform.position.y;
 
-        speed = MathF.Abs( Mathf.Pow(objectif.x, 2) + Mathf.Pow(objectif.y, 2) );
-        if (speed > acceleration)
+        _speed = MathF.Abs( Mathf.Pow(_objectif.x, 2) + Mathf.Pow(_objectif.y, 2) );
+        if (_speed > _acceleration)
         {
-            speed = acceleration;
+            _speed = _acceleration;
         }
         
-        angle = Mathf.Atan2(objectif.y, objectif.x);
+        _angle = Mathf.Atan2(_objectif.y, _objectif.x);
         
-        rb.rotation = angle * Mathf.Rad2Deg;
-        rb.linearVelocityX = speed * MathF.Cos(angle);
-        rb.linearVelocityY = speed * MathF.Sin(angle);
+        _rb.rotation = _angle * Mathf.Rad2Deg;
+        _rb.linearVelocityX = _speed * MathF.Cos(_angle);
+        _rb.linearVelocityY = _speed * MathF.Sin(_angle);
     }
 }
