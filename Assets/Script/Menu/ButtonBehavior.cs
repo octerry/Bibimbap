@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,12 @@ public class ButtonBehavior : MonoBehaviour
     [SerializeField] private Button _enableNarratorButton;
     [SerializeField] private Button _startButton;
 
+    [SerializeField] private PlayMusic _music;
+    [SerializeField] private Animator _rightTheaterCurtain;
+    [SerializeField] private Animator _leftTheaterCurtain;
+
+    private bool _outroStarted;
+
     private bool _pveSelected;
     
     void Start()
@@ -18,6 +25,11 @@ public class ButtonBehavior : MonoBehaviour
         _disableNarratorButton.onClick.AddListener(OnDisableNarratorClick);
         _enableNarratorButton.onClick.AddListener(OnEnableNarratorClick);
         _startButton.onClick.AddListener(OnStartClick);
+    }
+
+    private void Update()
+    {
+        if (_pveSelected && _outroStarted && !_music.IsPlaying()) GlobalSettings.LaunchPve();
     }
 
     private void OnPveClick()
@@ -42,7 +54,7 @@ public class ButtonBehavior : MonoBehaviour
 
     private void OnDisableNarratorClick()
     {
-        GlobalSettings.narratorEnabled = false;
+        GlobalSettings.NarratorVolume = 0;
         
         _disableNarratorButton.gameObject.SetActive(false);
         _enableNarratorButton.gameObject.SetActive(false);
@@ -51,7 +63,7 @@ public class ButtonBehavior : MonoBehaviour
 
     private void OnEnableNarratorClick()
     {
-        GlobalSettings.narratorEnabled = true;
+        // On garde la valeur de base de NarratorVolume donc on touche à rien
         
         _disableNarratorButton.gameObject.SetActive(false);
         _enableNarratorButton.gameObject.SetActive(false);
@@ -60,6 +72,9 @@ public class ButtonBehavior : MonoBehaviour
 
     private void OnStartClick()
     {
-        if (_pveSelected) GlobalSettings.LaunchPve();
+        _leftTheaterCurtain.SetTrigger("close");
+        _rightTheaterCurtain.SetTrigger("close");
+        _outroStarted = true;
+        _music.LaunchOutro();
     }
 }

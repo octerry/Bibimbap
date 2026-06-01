@@ -13,7 +13,6 @@ public class GlobalSettings : MonoBehaviour
     private static GlobalSettings instance = null;
     public static GlobalSettings Instance => instance;
     
-    public static bool narratorEnabled = true;
     public static bool gameRunning = true;
 
     public static float GlobalVolume = 1f;

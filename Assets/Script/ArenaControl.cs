@@ -82,6 +82,8 @@ public class ArenaControl : MonoBehaviour
             // _topBorderStartPosition = _topBorder.position.y;
             // _bottomBorderStartPosition = _bottomBorder.position.y;
             
+            // Pour le jouer qu'une fois
+            if(!_arenaTransitionning) PlaySound.instance.PlayByType(PlaySound.SoundType.Curtain, transform.position, 1);
             _arenaTransitionning = true;
             _leftTheaterCurtain.SetTrigger("close");
             _rightTheaterCurtain.SetTrigger("close");

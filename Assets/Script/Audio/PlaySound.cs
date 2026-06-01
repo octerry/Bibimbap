@@ -10,7 +10,8 @@ public class PlaySound : MonoBehaviour
         Throw,
         Walk,
         Jump,
-        Hit
+        Hit,
+        Curtain
     }
     
     [Serializable]
