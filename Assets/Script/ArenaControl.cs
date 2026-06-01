@@ -33,6 +33,10 @@ public class ArenaControl : MonoBehaviour
     [SerializeField] private AnimationCurve _animationCurve;
     [SerializeField] private float _transitionTime;
     private float _transitionMarker;
+
+    private bool _arenaTransitionning;
+    [SerializeField] private Animator _leftTheaterCurtain;
+    [SerializeField] private Animator _rightTheaterCurtain;
     
     private CameraBigArea.CameraState _cameraState = CameraBigArea.CameraState.BigArea;
     
@@ -68,15 +72,19 @@ public class ArenaControl : MonoBehaviour
     {
         if (_ennemiesParent.childCount <= 0 && !_transitionningToStatic && _cameraState != CameraBigArea.CameraState.Static)
         {
-            _mainCameraBigArea.SwitchToStatic(_staticAreaCenter,_staticCameraZoom + 0.8f);
-            _cameraState = CameraBigArea.CameraState.Static;
-            _transitionningToStatic = true;
-            _transitionMarker = 0;
+            // _mainCameraBigArea.SwitchToStatic(_staticAreaCenter,_staticCameraZoom + 0.8f);
+            // _cameraState = CameraBigArea.CameraState.Static;
+            // _transitionningToStatic = true;
+            // _transitionMarker = 0;
+
+            // _leftBorderStartPosition = _leftBorder.position.x;
+            // _rightBorderStartPosition = _rightBorder.position.x;
+            // _topBorderStartPosition = _topBorder.position.y;
+            // _bottomBorderStartPosition = _bottomBorder.position.y;
             
-            _leftBorderStartPosition = _leftBorder.position.x;
-            _rightBorderStartPosition = _rightBorder.position.x;
-            _topBorderStartPosition = _topBorder.position.y;
-            _bottomBorderStartPosition = _bottomBorder.position.y;
+            _arenaTransitionning = true;
+            _leftTheaterCurtain.SetTrigger("close");
+            _rightTheaterCurtain.SetTrigger("close");
         }
 
         if (_transitionningToStatic)
@@ -133,7 +141,12 @@ public class ArenaControl : MonoBehaviour
                 newPosition.y = (nextPosition * transitionProgression) + _bottomBorderStartPosition;
                 _bottomBorder.position = newPosition;
             }
-        }   
+        }
+
+        if (_arenaTransitionning)
+        {
+            _leftTheaterCurtain.GetCurrentAnimatorStateInfo(0).IsName("close");
+        }
     }
 
     private void CheatCheck(InputAction.CallbackContext phase)

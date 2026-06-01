@@ -52,7 +52,7 @@ public class PlaySound : MonoBehaviour
         }  
     }
 
-    public void PlayByType(SoundType type, Vector3 position)
+    public void PlayByType(SoundType type, Vector3 position, int value = -1)
     {
         // On mets l'objet à la bonne position
         GameObject source = Instantiate(_soundSourceElement);
@@ -63,11 +63,13 @@ public class PlaySound : MonoBehaviour
         
         // On prends l'index dans _sounds
         int soundFxIndex = _sounds.FindIndex(item => item.Type == type);
+        int index;
+        if (value >= 0) index = value;
         // On prends l'index d'un son aléatoire parmis _sounds.Audios
-        int randomIndex = (int)UnityEngine.Random.Range(0,_sounds[soundFxIndex].Audios.Length-1);
+        else index = (int)UnityEngine.Random.Range(0,_sounds[soundFxIndex].Audios.Length-1);
         
         // On le mets en lecture dans le AudioSource
-        sourceSound.clip = _sounds[soundFxIndex].Audios[randomIndex];
+        sourceSound.clip = _sounds[soundFxIndex].Audios[index];
         sourceSound.Play();
 
         sourceSound.volume = GlobalSettings.SoundFxVolume * GlobalSettings.GlobalVolume;
