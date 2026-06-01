@@ -15,6 +15,9 @@ public class GlobalSettings : MonoBehaviour
     
     public static bool gameRunning = true;
 
+    public static int curtainNumber = 0;
+    public static bool isCurtainOpen = false;
+
     public static float GlobalVolume = 1f;
     public static float SoundFxVolume = .5f;
     public static float NarratorVolume = .5f;
@@ -34,6 +37,16 @@ public class GlobalSettings : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public static void CurtainTrigger()
+    {
+        curtainNumber++;
+        if (curtainNumber >= 2)
+        {
+            isCurtainOpen = !isCurtainOpen;
+            curtainNumber = 0;
+        }
+    }
+    
     public static void LaunchPve()
     {
         SceneManager.LoadScene("Arena");
@@ -57,5 +70,10 @@ public class GlobalSettings : MonoBehaviour
         {
             SoundFxVolume = value;
         }
+    }
+
+    public static void LaunchCredits()
+    {
+        Debug.Log("CREDITS");
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlaySound : MonoBehaviour
 {
@@ -40,9 +41,9 @@ public class PlaySound : MonoBehaviour
 
     private void Update()
     {
-        if (_toCheck.Count > 0)
+        if (_toCheck.Any())
         {
-            foreach (var source in _toCheck)
+            foreach (var source in _toCheck.ToList())
             {
                 if (!source.isPlaying)
                 {
@@ -65,9 +66,16 @@ public class PlaySound : MonoBehaviour
         // On prends l'index dans _sounds
         int soundFxIndex = _sounds.FindIndex(item => item.Type == type);
         int index;
-        if (value >= 0) index = value;
+        if (value >= 0)
+        {
+            index = value;
+        }
         // On prends l'index d'un son aléatoire parmis _sounds.Audios
-        else index = (int)UnityEngine.Random.Range(0,_sounds[soundFxIndex].Audios.Length-1);
+        else
+        {
+            index = (int)UnityEngine.Random.Range(0,_sounds[soundFxIndex].Audios.Length-1);
+            Debug.Log(index);
+        }
         
         // On le mets en lecture dans le AudioSource
         sourceSound.clip = _sounds[soundFxIndex].Audios[index];

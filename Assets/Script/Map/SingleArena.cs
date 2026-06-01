@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class SingleArena : MonoBehaviour
 {
-    [SerializeField] private PlayMusic _music;
-    public bool IsPlaying { get; private set; }
+    public PlayMusic music;
     [SerializeField] private Transform _ennemies;
     public Transform[] spawnpoints;
     public Vector2 bounds;
-    [SerializeField] private Vector2 _center;
+    public Vector2 center;
 
-    private void Update()
-    {
-        IsPlaying = _music.IsPlaying();
-    }
-    
-    public void LaunchOutroMusic()
-    {
-        _music.LaunchOutro();
-    }
+    public Transform playerSpawnpoint;
 
     public void ActivateEnnemies()
     {
@@ -29,7 +20,12 @@ public class SingleArena : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_center, bounds);
-        Gizmos.DrawWireSphere(_center, 1f);
+        Gizmos.DrawWireCube(center, bounds);
+        Gizmos.DrawWireSphere(center, 1f);
+    }
+
+    public int EnnemiesNumber()
+    {
+        return _ennemies.childCount;
     }
 }

@@ -25,6 +25,7 @@ public class ButtonBehavior : MonoBehaviour
         _disableNarratorButton.onClick.AddListener(OnDisableNarratorClick);
         _enableNarratorButton.onClick.AddListener(OnEnableNarratorClick);
         _startButton.onClick.AddListener(OnStartClick);
+        PlaySound.instance.PlayByType(PlaySound.SoundType.Curtain, transform.position, 0);
     }
 
     private void Update()
@@ -72,10 +73,12 @@ public class ButtonBehavior : MonoBehaviour
 
     private void OnStartClick()
     {
+        PlaySound.instance.PlayByType(PlaySound.SoundType.Curtain, transform.position, 1);
+        _leftTheaterCurtain.ResetTrigger("open");
         _leftTheaterCurtain.SetTrigger("close");
+        _leftTheaterCurtain.ResetTrigger("open");
         _rightTheaterCurtain.SetTrigger("close");
         _outroStarted = true;
-        gameObject.SetActive(false);
         _music.LaunchOutro();
     }
 }

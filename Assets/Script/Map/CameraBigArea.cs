@@ -17,8 +17,8 @@ public class CameraBigArea : MonoBehaviour
     [SerializeField] private float _moveDuration;
 
     [SerializeField] private SingleArena _singleArena1;
-    [NonSerialized] public Vector2 _arenaSize;
-    [NonSerialized] public Vector2 _arenaCenter;
+    [NonSerialized] public Vector2 arenaSize;
+    [NonSerialized] public Vector2 arenaCenter;
     
     private Camera _mainCam;
     private CameraState _cameraState = CameraState.BigArea;
@@ -36,7 +36,7 @@ public class CameraBigArea : MonoBehaviour
     void Start()
     {
         _mainCam = Camera.main;
-        _arenaSize = _singleArena1.bounds;
+        arenaSize = _singleArena1.bounds;
         
         Vector3 newPosition = transform.position;
         newPosition = _player.position;
@@ -57,15 +57,15 @@ public class CameraBigArea : MonoBehaviour
                 newPosition.y = Mathf.Lerp(transform.position.y, _player.position.y, _moveDuration * Time.deltaTime);
                 newPosition.z = -100;
                 transform.position = newPosition;
-            
+                
                 // Stay In
                 float height = 2f * _mainCam.orthographicSize;
                 float width = height * _mainCam.aspect;
 
-                float right = _arenaSize.x / 2;
-                float left = - (_arenaSize.x/2);
-                float top = _arenaSize.y / 2;
-                float bottom = - (_arenaSize.y/2);
+                float right = arenaSize.x / 2 + arenaCenter.x;
+                float left = - (arenaSize.x/2)  + arenaCenter.x;
+                float top = arenaSize.y / 2 + arenaCenter.y;
+                float bottom = - (arenaSize.y/2) + arenaCenter.y;
             
                 if (_mainCam.transform.position.x < left + width/2) // à gauche
                 {
@@ -125,7 +125,7 @@ public class CameraBigArea : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(Vector2.zero,1f);
-        Gizmos.DrawWireCube(Vector2.zero, _arenaSize);
+        Gizmos.DrawWireCube(Vector2.zero, arenaSize);
     }
 
     public void SwitchToStatic(Vector2 center, float zoom)

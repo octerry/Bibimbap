@@ -75,6 +75,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (MathF.Abs(_rb.linearVelocity.x) < _maxSpeed || (_direction.x > 0 ^ _rb.linearVelocityX > 0))
                     _rb.linearVelocityX += _acceleration * _direction.x * Time.deltaTime;
+                if (Mathf.Abs(_rb.linearVelocity.x) > _maxSpeed)
+                {
+                    Vector2 newVelocity = _rb.linearVelocity;
+                    newVelocity.x = _maxSpeed * (Mathf.Abs(_rb.linearVelocity.x) / _rb.linearVelocity.x);
+                    _rb.linearVelocity = newVelocity;
+                }
             }
 
             if (!hit && _isGrounded) // Quand le joueur quitte le sol
@@ -106,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _direction = Vector2.zero;
                 _movingX = false;
+                if (_isGrounded) _rb.linearVelocity = Vector2.zero;
             }
             else
             {
