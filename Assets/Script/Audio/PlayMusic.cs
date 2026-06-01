@@ -11,6 +11,7 @@ public class PlayMusic : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.volume = GlobalSettings.MusicVolume * GlobalSettings.GlobalVolume;
         if (_musicIntro) 
         {
             _audioSource.clip = _musicIntro;
@@ -20,6 +21,7 @@ public class PlayMusic : MonoBehaviour
 
     private void Update()
     {
+        _audioSource.volume = GlobalSettings.MusicVolume * GlobalSettings.GlobalVolume;
         if (!_audioSource.isPlaying)
         {
             _audioSource.clip = _musicLoop;

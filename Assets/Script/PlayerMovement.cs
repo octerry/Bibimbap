@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     private Collider2D _mainCollider;
     private Vector2 _direction;
     private bool _movingX = false;
-    private bool _movingY = false;
     private bool _isGrounded = false;
     private int _doubleJumpsRemaining = 2;
     private int _doubleJumpMax = 2;
@@ -111,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 _movingX = false;
-                _movingY = false;
                 if ( MathF.Abs(_direction.x) > .1 )
                 {
                     _movingX = true;
@@ -121,10 +119,6 @@ public class PlayerMovement : MonoBehaviour
                     Vector3 newScale = _pj.transform.localScale;
                     newScale.x = MathF.Abs(newScale.x) * directionVectorX;
                     _pj.transform.localScale = newScale;
-                }
-                if ( MathF.Abs(_direction.y) > .1 )
-                {
-                    _movingY = true;
                 }
             }
         }

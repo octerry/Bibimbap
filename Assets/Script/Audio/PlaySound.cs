@@ -1,0 +1,77 @@
+using System;
+using UnityEngine;
+using System.Collections.Generic;
+
+public class PlaySound : MonoBehaviour
+{
+    public enum SoundType
+    {
+        Explosion,
+        Throw,
+        Walk,
+        Jump,
+        Hit
+    }
+    
+    [Serializable]
+    public class AudioLink
+    {
+        public SoundType Type;
+        public AudioClip[] Audios;
+    }
+    
+    [SerializeField] private List<AudioLink> _sounds;
+    private GameObject _soundSourceElement;
+    private List<AudioSource> _toCheck = new();
+
+    public static PlaySound instance;
+ 
+    
+    private void Awake()
+    {
+        instance = this;
+    }
+    
+    void Start()
+    {
+        _soundSourceElement = transform.Find("AudioSource").gameObject;
+    }
+
+    private void Update()
+    {
+        if (_toCheck.Count > 0)
+        {
+            foreach (var source in _toCheck)
+            {
+                if (!source.isPlaying)
+                {
+                    _toCheck.Remove(source);
+                    Destroy(source.gameObject);
+                }
+            }
+        }  
+    }
+
+    public void PlayByType(SoundType type, Vector3 position)
+    {
+        // On mets l'objet à la bonne position
+        GameObject source = Instantiate(_soundSourceElement);
+        source.transform.position = position;
+
+        // On récup son AudioSource
+        AudioSource sourceSound = source.GetComponent<AudioSource>();
+        
+        // On prends l'index dans _sounds
+        int soundFxIndex = _sounds.FindIndex(item => item.Type == type);
+        // On prends l'index d'un son aléatoire parmis _sounds.Audios
+        int randomIndex = (int)UnityEngine.Random.Range(0,_sounds[soundFxIndex].Audios.Length-1);
+        
+        // On le mets en lecture dans le AudioSource
+        sourceSound.clip = _sounds[soundFxIndex].Audios[randomIndex];
+        sourceSound.Play();
+
+        sourceSound.volume = GlobalSettings.SoundFxVolume * GlobalSettings.GlobalVolume;
+        
+        _toCheck.Add(sourceSound);
+    }
+}

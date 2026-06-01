@@ -16,6 +16,9 @@ public class ExplosionSystem : MonoBehaviour
         _startTime = Time.time;
         _renderer = GetComponent<Renderer>();
         _coll = GetComponent<Collider2D>();
+        
+        // On joue le son d'explosion
+        PlaySound.instance.PlayByType(PlaySound.SoundType.Explosion, transform.position);
     }
 
     // Update is called once per frame

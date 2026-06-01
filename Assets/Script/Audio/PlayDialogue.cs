@@ -10,6 +10,7 @@ public class PlayDialogue : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.clip = _dialogues[0];
+        _audioSource.volume = GlobalSettings.NarratorVolume * GlobalSettings.GlobalVolume;
         _audioSource.Play();
     }
 }
