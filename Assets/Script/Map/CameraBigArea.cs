@@ -16,8 +16,9 @@ public class CameraBigArea : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private float _moveDuration;
 
-    [SerializeField] private BackgroundBehavior _backgroundBehavior;
-    private Vector2 _arenaSize;
+    [SerializeField] private SingleArena _singleArena1;
+    [NonSerialized] public Vector2 _arenaSize;
+    [NonSerialized] public Vector2 _arenaCenter;
     
     private Camera _mainCam;
     private CameraState _cameraState = CameraState.BigArea;
@@ -35,7 +36,7 @@ public class CameraBigArea : MonoBehaviour
     void Start()
     {
         _mainCam = Camera.main;
-        _arenaSize = _backgroundBehavior.arenaSize;
+        _arenaSize = _singleArena1.bounds;
         
         Vector3 newPosition = transform.position;
         newPosition = _player.position;

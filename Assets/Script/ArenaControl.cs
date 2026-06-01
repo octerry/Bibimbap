@@ -39,6 +39,8 @@ public class ArenaControl : MonoBehaviour
     [SerializeField] private Animator _rightTheaterCurtain;
     
     private CameraBigArea.CameraState _cameraState = CameraBigArea.CameraState.BigArea;
+
+    [SerializeField] private PlayMusic[] _musics;
     
     void OnEnable()
     {
@@ -147,7 +149,8 @@ public class ArenaControl : MonoBehaviour
 
         if (_arenaTransitionning)
         {
-            _leftTheaterCurtain.GetCurrentAnimatorStateInfo(0).IsName("close");
+            // Animation du drap
+            // Debug.Log(_leftTheaterCurtain.GetCurrentAnimatorStateInfo(0).IsName("Rideaux_fermeture_gauche_a_droite"));
         }
     }
 

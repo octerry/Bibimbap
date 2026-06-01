@@ -75,6 +75,7 @@ public class ButtonBehavior : MonoBehaviour
         _leftTheaterCurtain.SetTrigger("close");
         _rightTheaterCurtain.SetTrigger("close");
         _outroStarted = true;
+        gameObject.SetActive(false);
         _music.LaunchOutro();
     }
 }
