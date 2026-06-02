@@ -155,18 +155,20 @@ public class ArenaControl : MonoBehaviour
 
             if (_arenaTransitionning)
             {
-                if (!GlobalSettings.isCurtainOpen)
+                if (!GlobalSettings.isCurtainOpen && !GlobalSettings.prepareTransitionCredits)
                 {
                     NextArena();
+                    
                     _leftTheaterCurtain.ResetTrigger("close");
-                    _leftTheaterCurtain.SetTrigger("open");
                     _rightTheaterCurtain.ResetTrigger("close");
+                    _leftTheaterCurtain.SetTrigger("open");
                     _rightTheaterCurtain.SetTrigger("open");
+                    
                     PlaySound.instance.PlayByType(PlaySound.SoundType.Curtain, transform.position, 0);
+                    
                     _arenaTransitionning = false;
                 }
             }
-
         }
     }
 
@@ -176,6 +178,7 @@ public class ArenaControl : MonoBehaviour
         if (_currentArenaIndex >= _arenas.Length)
         {
             GlobalSettings.LaunchCredits();
+            _arenaTransitionning = false;
         }
         else
         {
@@ -195,13 +198,9 @@ public class ArenaControl : MonoBehaviour
     
     private void CheatCheck(InputAction.CallbackContext phase)
     {
-        if (_ennemiesParent.childCount >= 0)
+        if (_currentArena.EnnemiesNumber() > 0)
         {
-            for (int i = 0; i < _ennemiesParent.childCount; i++)
-            {
-                GameObject child = _ennemiesParent.GetChild(i).gameObject;
-                Destroy(child);
-            }
+            _currentArena.Order66();
         }
     }
     

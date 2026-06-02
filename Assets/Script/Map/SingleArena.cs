@@ -28,4 +28,13 @@ public class SingleArena : MonoBehaviour
     {
         return _ennemies.childCount;
     }
+
+    public void Order66()
+    {
+        for (int i = 0; i < _ennemies.childCount; i++)
+        {
+            GameObject child = _ennemies.GetChild(i).gameObject;
+            Destroy(child);
+        }
+    }
 }

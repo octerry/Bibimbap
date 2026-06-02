@@ -22,6 +22,7 @@ public class GlobalSettings : MonoBehaviour
     public static float SoundFxVolume = .5f;
     public static float NarratorVolume = .5f;
     public static float MusicVolume = .5f;
+    public static bool prepareTransitionCredits { get; private set; }
     
     private void Awake()
     {
@@ -44,6 +45,11 @@ public class GlobalSettings : MonoBehaviour
         {
             isCurtainOpen = !isCurtainOpen;
             curtainNumber = 0;
+        }
+
+        if (!isCurtainOpen && prepareTransitionCredits)
+        {
+            SceneManager.LoadScene("Credits");
         }
     }
     
@@ -74,6 +80,6 @@ public class GlobalSettings : MonoBehaviour
 
     public static void LaunchCredits()
     {
-        Debug.Log("CREDITS");
+        prepareTransitionCredits = true;
     }
 }

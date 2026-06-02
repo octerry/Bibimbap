@@ -7,6 +7,7 @@ public class CreditScroll : MonoBehaviour
     [SerializeField] private float _speed;
     private float _height;
     private float _canvasHeight;
+    private float _timeCount;
 
     private void Start()
     {
@@ -21,6 +22,15 @@ public class CreditScroll : MonoBehaviour
             Vector3 newPos = transform.position;
             newPos.y += _speed * Time.deltaTime;
             transform.position = newPos;
+        }
+        else
+        {
+            _timeCount += Time.deltaTime;
+
+            if (_timeCount >= 5f)
+            {
+                
+            }
         }
     }
 }
